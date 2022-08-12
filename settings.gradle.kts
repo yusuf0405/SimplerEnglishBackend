@@ -1,0 +1,1 @@
+rootProject.name = "english.simpler.joseph.simpler-english-backend"
