@@ -14,9 +14,8 @@ import org.jetbrains.exposed.sql.Database
 
 fun main() {
     val config = HikariConfig("hikari.properties")
-    val dataSource = HikariDataSource(config)
+    val dataSource = HikariDataSource(DatabaseConnection.hikari())
     Database.connect(dataSource)
-    DatabaseConnection.database
 
     embeddedServer(Netty, port = System.getenv("PORT").toInt()) {
         configureRouting()
