@@ -14,13 +14,14 @@ import org.jetbrains.exposed.sql.Database
 
 fun main() {
     val config = HikariConfig("hikari.properties")
-    val dataSource = HikariDataSource(DatabaseConnection.hikari())
+    val dataSource = HikariDataSource(config)
     Database.connect(dataSource)
+    DatabaseConnection.database
 
     embeddedServer(Netty, port = System.getenv("PORT").toInt()) {
         configureRouting()
-        configureSerialization()
         configureLoginRouting()
         configureRegisterRouting()
+        configureSerialization()
     }.start(wait = true)
 }

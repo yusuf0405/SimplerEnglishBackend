@@ -8,7 +8,7 @@ data class LoginReceiveRemote(
     val password: String
 )
 
-@kotlinx.serialization.Serializable
+@Serializable
 data class LoginResponseRemote(
     val token: String
 )
